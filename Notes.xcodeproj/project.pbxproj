@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B217A38A28AE7A3C008CC549 /* Note.swift in Sources */ = {isa = PBXBuildFile; fileRef = B217A38928AE7A3C008CC549 /* Note.swift */; };
+		B217A38F28AE8DE9008CC549 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = B217A38E28AE8DE9008CC549 /* String.swift */; };
 		B29606B228AE710600E09F3B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B29606B128AE710600E09F3B /* AppDelegate.swift */; };
 		B29606B428AE710600E09F3B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B29606B328AE710600E09F3B /* SceneDelegate.swift */; };
 		B29606B628AE710600E09F3B /* NoteListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B29606B528AE710600E09F3B /* NoteListViewController.swift */; };
@@ -17,6 +19,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		B217A38928AE7A3C008CC549 /* Note.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Note.swift; sourceTree = "<group>"; };
+		B217A38E28AE8DE9008CC549 /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		B29606AE28AE710600E09F3B /* Notes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Notes.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B29606B128AE710600E09F3B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B29606B328AE710600E09F3B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -71,6 +75,30 @@
 			path = ViewModels;
 			sourceTree = "<group>";
 		};
+		B217A38728AE7A24008CC549 /* Domain */ = {
+			isa = PBXGroup;
+			children = (
+				B217A38828AE7A2E008CC549 /* Models */,
+			);
+			path = Domain;
+			sourceTree = "<group>";
+		};
+		B217A38828AE7A2E008CC549 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				B217A38928AE7A3C008CC549 /* Note.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		B217A38C28AE8DB3008CC549 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				B217A38E28AE8DE9008CC549 /* String.swift */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
 		B29606A528AE710600E09F3B = {
 			isa = PBXGroup;
 			children = (
@@ -91,8 +119,10 @@
 			isa = PBXGroup;
 			children = (
 				B29606C828AE711900E09F3B /* Application */,
+				B217A38728AE7A24008CC549 /* Domain */,
 				B29606C928AE712400E09F3B /* Presentation */,
 				B29606CA28AE714A00E09F3B /* Resources */,
+				B217A38C28AE8DB3008CC549 /* Utilities */,
 			);
 			path = Notes;
 			sourceTree = "<group>";
@@ -197,6 +227,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B217A38F28AE8DE9008CC549 /* String.swift in Sources */,
+				B217A38A28AE7A3C008CC549 /* Note.swift in Sources */,
 				B29606B628AE710600E09F3B /* NoteListViewController.swift in Sources */,
 				B29606B228AE710600E09F3B /* AppDelegate.swift in Sources */,
 				B29606B428AE710600E09F3B /* SceneDelegate.swift in Sources */,
