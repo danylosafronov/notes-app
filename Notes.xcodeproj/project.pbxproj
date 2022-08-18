@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		B29606B228AE710600E09F3B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B29606B128AE710600E09F3B /* AppDelegate.swift */; };
 		B29606B428AE710600E09F3B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B29606B328AE710600E09F3B /* SceneDelegate.swift */; };
-		B29606B628AE710600E09F3B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B29606B528AE710600E09F3B /* ViewController.swift */; };
+		B29606B628AE710600E09F3B /* NoteListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B29606B528AE710600E09F3B /* NoteListViewController.swift */; };
 		B29606B928AE710600E09F3B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B29606B728AE710600E09F3B /* Main.storyboard */; };
 		B29606BC28AE710600E09F3B /* Notes.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B29606BA28AE710600E09F3B /* Notes.xcdatamodeld */; };
 		B29606BE28AE710700E09F3B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B29606BD28AE710700E09F3B /* Assets.xcassets */; };
@@ -20,7 +20,7 @@
 		B29606AE28AE710600E09F3B /* Notes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Notes.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B29606B128AE710600E09F3B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B29606B328AE710600E09F3B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		B29606B528AE710600E09F3B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		B29606B528AE710600E09F3B /* NoteListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteListViewController.swift; sourceTree = "<group>"; };
 		B29606B828AE710600E09F3B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		B29606BB28AE710600E09F3B /* Notes.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Notes.xcdatamodel; sourceTree = "<group>"; };
 		B29606BD28AE710700E09F3B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -39,6 +39,38 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B217A38328AE753A008CC549 /* Screens */ = {
+			isa = PBXGroup;
+			children = (
+				B217A38428AE7549008CC549 /* NoteList */,
+			);
+			path = Screens;
+			sourceTree = "<group>";
+		};
+		B217A38428AE7549008CC549 /* NoteList */ = {
+			isa = PBXGroup;
+			children = (
+				B217A38628AE793D008CC549 /* ViewModels */,
+				B217A38528AE7919008CC549 /* Views */,
+			);
+			path = NoteList;
+			sourceTree = "<group>";
+		};
+		B217A38528AE7919008CC549 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				B29606B528AE710600E09F3B /* NoteListViewController.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		B217A38628AE793D008CC549 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
 		B29606A528AE710600E09F3B = {
 			isa = PBXGroup;
 			children = (
@@ -77,7 +109,7 @@
 		B29606C928AE712400E09F3B /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
-				B29606B528AE710600E09F3B /* ViewController.swift */,
+				B217A38328AE753A008CC549 /* Screens */,
 			);
 			path = Presentation;
 			sourceTree = "<group>";
@@ -165,7 +197,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B29606B628AE710600E09F3B /* ViewController.swift in Sources */,
+				B29606B628AE710600E09F3B /* NoteListViewController.swift in Sources */,
 				B29606B228AE710600E09F3B /* AppDelegate.swift in Sources */,
 				B29606B428AE710600E09F3B /* SceneDelegate.swift in Sources */,
 				B29606BC28AE710600E09F3B /* Notes.xcdatamodeld in Sources */,
@@ -244,7 +276,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -298,7 +330,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -332,7 +364,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -360,7 +392,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
