@@ -52,12 +52,17 @@ final class NoteListViewController: UIViewController {
         navigationItem.rightBarButtonItems = [makeCreateNoteBarButton()]
     }
     
-    private func setupNestedView(with notes: [Note]) {
+    private func applyNestedView(with notes: [Note]) {
         nestedView.apply(notes.map { .note(note: $0) }, to: .main)
+    }
+    
+    private func applyNestedView(with loading: Bool) {
+        nestedView.loading = loading
     }
     
     private func bind() {
         bindViewModelNotes()
+        bindViewModelLoading()
     }
     
     private func bindViewModelNotes() {
@@ -67,6 +72,17 @@ final class NoteListViewController: UIViewController {
             .receive(on: DispatchQueue.main)
             .sink { [weak self] notes in
                 self?.didChangeViewModelNotes(notes)
+            }
+            .store(in: &cancellable)
+    }
+    
+    private func bindViewModelLoading() {
+        viewModel
+            .$loading
+            .subscribe(on: DispatchQueue.background)
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] loading in
+                self?.didChangeViewModelLoading(loading)
             }
             .store(in: &cancellable)
     }
@@ -81,7 +97,11 @@ final class NoteListViewController: UIViewController {
     }
     
     private func didChangeViewModelNotes(_ notes: [Note]) {
-        setupNestedView(with: notes)
+        applyNestedView(with: notes)
+    }
+    
+    private func didChangeViewModelLoading(_ loading: Bool) {
+        applyNestedView(with: loading)
     }
 }
 

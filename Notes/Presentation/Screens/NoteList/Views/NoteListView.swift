@@ -17,6 +17,16 @@ final class NoteListView: UIView {
     private var dataSource: DataSource!
     private var collectionView: UICollectionView!
     
+    private lazy var contentLayoutGuide = UILayoutGuide()
+    private lazy var loadIndicatorView = LoadIndicatorView()
+    
+    var loading: Bool = false {
+        didSet {
+            setupLoadIndicaorViewLoading(loading)
+            setupLoadIndicatorVisibility(loading)
+        }
+    }
+    
     init() {
         super.init(frame: .zero)
         setup()
@@ -27,9 +37,22 @@ final class NoteListView: UIView {
     }
     
     private func setup() {
+        setupContentLayoutGuide()
         setupCollectionView()
         setupCollectionViewCellRegistration()
         setupCollectionViewDataSource()
+        setupLoadIndicaorView()
+    }
+    
+    private func setupContentLayoutGuide() {
+        addLayoutGuide(contentLayoutGuide)
+        
+        NSLayoutConstraint.activate([
+            contentLayoutGuide.topAnchor.constraint(equalTo: topAnchor),
+            contentLayoutGuide.bottomAnchor.constraint(equalTo: bottomAnchor),
+            contentLayoutGuide.leadingAnchor.constraint(equalTo: leadingAnchor),
+            contentLayoutGuide.trailingAnchor.constraint(equalTo: trailingAnchor),
+        ])
     }
     
     private func setupCollectionView() {
@@ -42,10 +65,10 @@ final class NoteListView: UIView {
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
-            collectionView.topAnchor.constraint(equalTo: topAnchor),
-            collectionView.bottomAnchor.constraint(equalTo: bottomAnchor),
-            collectionView.leadingAnchor.constraint(equalTo: leadingAnchor),
-            collectionView.trailingAnchor.constraint(equalTo: trailingAnchor),
+            collectionView.topAnchor.constraint(equalTo: contentLayoutGuide.topAnchor),
+            collectionView.bottomAnchor.constraint(equalTo: contentLayoutGuide.bottomAnchor),
+            collectionView.leadingAnchor.constraint(equalTo: contentLayoutGuide.leadingAnchor),
+            collectionView.trailingAnchor.constraint(equalTo: contentLayoutGuide.trailingAnchor),
         ])
     }
     
@@ -60,27 +83,39 @@ final class NoteListView: UIView {
         }
     }
     
+    private func setupLoadIndicaorView() {
+        addSubview(loadIndicatorView)
+        
+        loadIndicatorView.text = NSLocalizedString("Loading", comment: "A load indicator text")
+        loadIndicatorView.backgroundColor = .systemBackground
+        loadIndicatorView.translatesAutoresizingMaskIntoConstraints = false
+        
+        setupLoadIndicaorViewLoading(false)
+        setupLoadIndicatorVisibility(false)
+        
+        NSLayoutConstraint.activate([
+            loadIndicatorView.topAnchor.constraint(equalTo: contentLayoutGuide.topAnchor),
+            loadIndicatorView.bottomAnchor.constraint(equalTo: contentLayoutGuide.bottomAnchor),
+            loadIndicatorView.leadingAnchor.constraint(equalTo: contentLayoutGuide.leadingAnchor),
+            loadIndicatorView.trailingAnchor.constraint(equalTo: contentLayoutGuide.trailingAnchor),
+        ])
+    }
+
+    private func setupLoadIndicaorViewLoading(_ loading: Bool) {
+        loadIndicatorView.loading = loading
+    }
+    
+    private func setupLoadIndicatorVisibility(_ state: Bool) {
+        loadIndicatorView.isHidden = !state
+    }
+    
     private func makeCollectionViewLayout() -> UICollectionViewLayout {
         var configuration = UICollectionLayoutListConfiguration(appearance: .plain)
         configuration.showsSeparators = true
         
         return UICollectionViewCompositionalLayout.list(using: configuration)
     }
-}
-
-extension NoteListView {
-    enum Section: Hashable {
-        case main
-    }
-}
-
-extension NoteListView {
-    enum Item: Hashable {
-        case note(note: Note)
-    }
-}
-
-extension NoteListView {
+    
     private func collectionViewCellRegistrationHandler(cell: UICollectionViewListCell, indexPath: IndexPath, item: Item) {
         switch item {
         case .note(let note):
@@ -93,6 +128,18 @@ extension NoteListView {
             
             cell.contentConfiguration = configuration
         }
+    }
+}
+
+extension NoteListView {
+    enum Section: Hashable {
+        case main
+    }
+}
+
+extension NoteListView {
+    enum Item: Hashable {
+        case note(note: Note)
     }
 }
 

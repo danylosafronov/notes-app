@@ -18,8 +18,15 @@ final class NoteListViewModel {
         loadTask = Task(priority: .high) {
             loading = true
             
-            notes = .sample
+            #if DEBUG
+            do {
+                try await Task.sleep(nanoseconds: 3_000_000_000)
+            } catch {
+                // ignore
+            }
+            #endif
             
+            notes = .sample
             loading = false
         }
     }
