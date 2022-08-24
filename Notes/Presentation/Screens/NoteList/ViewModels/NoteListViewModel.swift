@@ -14,20 +14,23 @@ final class NoteListViewModel {
     
     private var loadTask: Task<Void, Never>?
     
-    func load(refresh: Bool = false) {
-        loadTask = Task(priority: .high) {
-            loading = true
-            
-            #if DEBUG
-            do {
-                try await Task.sleep(nanoseconds: 3_000_000_000)
-            } catch {
-                // ignore
-            }
-            #endif
-            
-            notes = .sample
+    func load(refresh: Bool = false) async {
+        loading = true
+        
+        guard notes.isEmpty else {
             loading = false
+            return
         }
+        
+#if DEBUG
+        do {
+            try await Task.sleep(nanoseconds: 3_000_000_000)
+        } catch {
+            // ignore
+        }
+#endif
+        
+        notes = .sample
+        loading = false
     }
 }

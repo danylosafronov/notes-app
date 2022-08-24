@@ -73,7 +73,19 @@ final class NoteListView: UIView {
     }
     
     private func setupCollectionViewCellRegistration() {
-        cellRegistration = CellRegistration(handler: collectionViewCellRegistrationHandler)
+        cellRegistration = CellRegistration { cell, indexPath, item in
+            switch item {
+            case .note(let note):
+                var configuration = cell.defaultContentConfiguration()
+                configuration.text = note.title
+                configuration.textProperties.numberOfLines = 1
+                configuration.textProperties.font = .boldSystemFont(ofSize: 18.0)
+                configuration.secondaryText = note.text
+                configuration.secondaryTextProperties.numberOfLines = 3
+                
+                cell.contentConfiguration = configuration
+            }
+        }
     }
     
     private func setupCollectionViewDataSource() {
@@ -114,20 +126,6 @@ final class NoteListView: UIView {
         configuration.showsSeparators = true
         
         return UICollectionViewCompositionalLayout.list(using: configuration)
-    }
-    
-    private func collectionViewCellRegistrationHandler(cell: UICollectionViewListCell, indexPath: IndexPath, item: Item) {
-        switch item {
-        case .note(let note):
-            var configuration = cell.defaultContentConfiguration()
-            configuration.text = note.title
-            configuration.textProperties.numberOfLines = 1
-            configuration.textProperties.font = .boldSystemFont(ofSize: 18.0)
-            configuration.secondaryText = note.text
-            configuration.secondaryTextProperties.numberOfLines = 3
-            
-            cell.contentConfiguration = configuration
-        }
     }
 }
 

@@ -9,8 +9,11 @@ import UIKit
 
 final class NoteListViewController: UIViewController {
     private let viewModel: NoteListViewModel
-    private lazy var nestedView = NoteListView()
-    private var cancellable = CancellableBag()
+    private lazy var nestedView: NoteListView! = NoteListView()
+    
+    private var loadTask: Task<Void, Never>?
+    private var bindViewModelTask: Task<Void, Never>?
+    private var bindViewModelLoadingTask: Task<Void, Never>?
     
     init(dependency: Dependency) {
         viewModel = dependency.viewModel
@@ -28,14 +31,24 @@ final class NoteListViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         setup()
-        bind()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        viewModel.load(refresh: false)
+        bind()
+        
+        loadTask = Task { [weak self] in
+            await self?.viewModel.load(refresh: false)
+        }
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        
+        loadTask?.cancel()
+        bindViewModelTask?.cancel()
+        bindViewModelLoadingTask?.cancel()
     }
     
     private func setup() {
@@ -66,25 +79,19 @@ final class NoteListViewController: UIViewController {
     }
     
     private func bindViewModelNotes() {
-        viewModel
-            .$notes
-            .subscribe(on: DispatchQueue.background)
-            .receive(on: DispatchQueue.main)
-            .sink { [weak self] notes in
+        bindViewModelTask = Task { [weak self] in
+            for await notes in viewModel.$notes.values {
                 self?.didChangeViewModelNotes(notes)
             }
-            .store(in: &cancellable)
+        }
     }
     
     private func bindViewModelLoading() {
-        viewModel
-            .$loading
-            .subscribe(on: DispatchQueue.background)
-            .receive(on: DispatchQueue.main)
-            .sink { [weak self] loading in
+        bindViewModelLoadingTask = Task { [weak self] in
+            for await loading in viewModel.$loading.values {
                 self?.didChangeViewModelLoading(loading)
             }
-            .store(in: &cancellable)
+        }
     }
     
     private func makeCreateNoteBarButton() -> UIBarButtonItem {
