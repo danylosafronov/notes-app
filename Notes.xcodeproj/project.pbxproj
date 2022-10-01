@@ -11,8 +11,6 @@
 		B217A38F28AE8DE9008CC549 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = B217A38E28AE8DE9008CC549 /* String.swift */; };
 		B217A3B128AFC6C3008CC549 /* NoteListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B217A3B028AFC6C3008CC549 /* NoteListView.swift */; };
 		B2655CC428B0DD2E00C6727E /* NoteListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2655CC328B0DD2E00C6727E /* NoteListViewModel.swift */; };
-		B2655CC628B0EF0000C6727E /* CancellableBag.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2655CC528B0EF0000C6727E /* CancellableBag.swift */; };
-		B2655CC828B0F05600C6727E /* DispatchQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2655CC728B0F05600C6727E /* DispatchQueue.swift */; };
 		B2655CD928B0F91000C6727E /* LoadIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2655CD828B0F91000C6727E /* LoadIndicatorView.swift */; };
 		B29606B228AE710600E09F3B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B29606B128AE710600E09F3B /* AppDelegate.swift */; };
 		B29606B428AE710600E09F3B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B29606B328AE710600E09F3B /* SceneDelegate.swift */; };
@@ -27,8 +25,6 @@
 		B217A38E28AE8DE9008CC549 /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		B217A3B028AFC6C3008CC549 /* NoteListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteListView.swift; sourceTree = "<group>"; };
 		B2655CC328B0DD2E00C6727E /* NoteListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteListViewModel.swift; sourceTree = "<group>"; };
-		B2655CC528B0EF0000C6727E /* CancellableBag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CancellableBag.swift; sourceTree = "<group>"; };
-		B2655CC728B0F05600C6727E /* DispatchQueue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DispatchQueue.swift; sourceTree = "<group>"; };
 		B2655CD828B0F91000C6727E /* LoadIndicatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadIndicatorView.swift; sourceTree = "<group>"; };
 		B29606AE28AE710600E09F3B /* Notes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Notes.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B29606B128AE710600E09F3B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -54,25 +50,26 @@
 		B217A38328AE753A008CC549 /* Screens */ = {
 			isa = PBXGroup;
 			children = (
-				B217A38428AE7549008CC549 /* NoteList */,
+				B2655CDA28B6603A00C6727E /* Note */,
+				B217A38428AE7549008CC549 /* Note List */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
 		};
-		B217A38428AE7549008CC549 /* NoteList */ = {
+		B217A38428AE7549008CC549 /* Note List */ = {
 			isa = PBXGroup;
 			children = (
 				B217A38628AE793D008CC549 /* ViewModels */,
 				B217A38528AE7919008CC549 /* Views */,
 			);
-			path = NoteList;
+			path = "Note List";
 			sourceTree = "<group>";
 		};
 		B217A38528AE7919008CC549 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				B29606B528AE710600E09F3B /* NoteListViewController.swift */,
 				B217A3B028AFC6C3008CC549 /* NoteListView.swift */,
+				B29606B528AE710600E09F3B /* NoteListViewController.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -105,8 +102,6 @@
 			isa = PBXGroup;
 			children = (
 				B217A38E28AE8DE9008CC549 /* String.swift */,
-				B2655CC528B0EF0000C6727E /* CancellableBag.swift */,
-				B2655CC728B0F05600C6727E /* DispatchQueue.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -255,10 +250,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				B217A38F28AE8DE9008CC549 /* String.swift in Sources */,
-				B2655CC628B0EF0000C6727E /* CancellableBag.swift in Sources */,
 				B2655CD928B0F91000C6727E /* LoadIndicatorView.swift in Sources */,
 				B217A38A28AE7A3C008CC549 /* Note.swift in Sources */,
-				B2655CC828B0F05600C6727E /* DispatchQueue.swift in Sources */,
 				B29606B628AE710600E09F3B /* NoteListViewController.swift in Sources */,
 				B2655CC428B0DD2E00C6727E /* NoteListViewModel.swift in Sources */,
 				B29606B228AE710600E09F3B /* AppDelegate.swift in Sources */,

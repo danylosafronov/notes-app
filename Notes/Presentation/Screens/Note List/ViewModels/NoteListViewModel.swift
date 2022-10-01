@@ -11,9 +11,7 @@ import Foundation
 final class NoteListViewModel {
     @Published private (set) var notes: [Note] = []
     @Published private (set) var loading: Bool = false
-    
-    private var loadTask: Task<Void, Never>?
-    
+
     func load(refresh: Bool = false) async {
         loading = true
         

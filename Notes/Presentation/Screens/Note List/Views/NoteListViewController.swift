@@ -9,7 +9,7 @@ import UIKit
 
 final class NoteListViewController: UIViewController {
     private let viewModel: NoteListViewModel
-    private lazy var nestedView: NoteListView! = NoteListView()
+    private lazy var nestedView: NoteListView = NoteListView()
     
     private var loadTask: Task<Void, Never>?
     private var bindViewModelTask: Task<Void, Never>?
